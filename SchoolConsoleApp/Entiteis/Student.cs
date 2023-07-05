@@ -14,6 +14,9 @@ namespace SchoolConsoleApp.Entiteis
         public DateTime DateOfBirth { get; set; }
         public Parent Parent { get; set; }
 
+        public List<Bill> Bills { get; } = new List<Bill>();
+
+
         public Student(int id, string name, string email, int age, string gender, string address, DateTime dateOfBirth, Parent parent)
             : base(id, name, email)
         {
@@ -22,6 +25,16 @@ namespace SchoolConsoleApp.Entiteis
             Address = address;
             DateOfBirth = dateOfBirth;
             Parent = parent;
+        }
+
+        public void AddBill(Bill bill)
+        {
+            Bills.Add(bill);
+        }
+
+        public decimal CalculateTotalBillAmount()
+        {
+            return Bills.Sum(bill => bill.Amount);
         }
 
         public override string ToString()

@@ -39,5 +39,10 @@ namespace SchoolConsoleApp.Entiteis
         {
             return Students.Count;
         }
+
+        public Student GetStudentByID(int studentID)
+        {
+            return Students.FirstOrDefault(student => student.ID == studentID);
+        }
     }
 }
