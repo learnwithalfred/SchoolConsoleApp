@@ -4,7 +4,7 @@ using SchoolConsoleApp.Factories;
 using SchoolConsoleApp.Services;
 using System;
 
-namespace MyConsoleApp
+namespace SchoolConsoleApp
 {
     class Program
     {
@@ -21,7 +21,7 @@ namespace MyConsoleApp
             var billService = serviceProvider.GetService<IBillService>();
             var paymentService = serviceProvider.GetService<IPaymentService>();
 
-            if (userFactory != null)
+            if (userFactory != null && paymentService!= null && billService != null)
             {
                 // Create parent
                 Parent parent = userFactory.CreateParent("Mike Johnson", "mike@example.com", "123456789", "456 Elm St", "Male");

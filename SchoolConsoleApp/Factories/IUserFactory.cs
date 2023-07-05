@@ -7,13 +7,6 @@ using System.Threading.Tasks;
 
 namespace SchoolConsoleApp.Factories
 {
-    /*  public interface IUserFactory
-      {
-          Student CreateStudent(string name, string email, int age, string gender, string address, DateTime dateOfBirth, Parent parent);
-          Teacher CreateTeacher(string name, string email, string specialty, string gender, string phoneNumber);
-          Parent CreateParent(string name, string email, List<Student> students, string phoneNumber, string address, string gender);
-      }
-    */
 
     public interface IUserFactory
     {
