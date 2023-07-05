@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,6 +19,12 @@ namespace SchoolConsoleApp.Entiteis
             Specialty = specialty;
             Gender = gender;
             PhoneNumber = phoneNumber;
+        }
+
+
+        public override string ToString()
+        {
+            return $"Name: {Name}\nEmail: {Email}\nSpecialty: {Specialty}\nGender: {Gender}\nPhone: {PhoneNumber}";
         }
     }
 }

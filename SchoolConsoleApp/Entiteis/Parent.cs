@@ -20,5 +20,11 @@ namespace SchoolConsoleApp.Entiteis
             Address = address;
             Gender = gender;
         }
+
+        public override string ToString()
+        {
+            string studentNames = string.Join(", ", Students.Select(s => s.Name));
+            return $"Name: {Name}\nEmail: {Email}\nPhone Number: {PhoneNumber}\nAddress: {Address}\nGender: {Gender}\nStudents: {studentNames}";
+        }
     }
 }

@@ -23,5 +23,10 @@ namespace SchoolConsoleApp.Entiteis
             DateOfBirth = dateOfBirth;
             Parent = parent;
         }
+
+        public override string ToString()
+        {
+            return $"Name: {Name}\nEmail: {Email}\nAge: {Age}\nGender: {Gender}\nAddress: {Address}\nParent Name: {Parent.Name}";
+        }
     }
 }

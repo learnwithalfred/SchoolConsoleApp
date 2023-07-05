@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace SchoolConsoleApp.Factories
 {
-    // UserFactory.cs
 
     public class UserFactory : IUserFactory
     {
-        private int nextUserID = 1; // Tracks the next available user ID
+        private int nextUserID = 1;
 
         public Student CreateStudent(string name, string email, int age, string gender, string address, DateTime dateOfBirth, Parent parent)
         {

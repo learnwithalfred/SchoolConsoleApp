@@ -9,12 +9,35 @@ namespace SchoolConsoleApp.Entiteis
     public class Classroom
     {
         public int ID { get; set; }
-        public List<Student> Students { get; set; }
 
-        public Classroom(int id)
+        public string Name { get; set; }
+        public List<Student> Students { get; } = new List<Student>();
+
+        public Classroom(int id, string name)
         {
             ID = id;
+            Name = name;
             Students = new List<Student>();
+        }
+
+        public override string ToString()
+        {
+            return $"ID: {ID}\nName: {Name}\nStudents: {string.Join(", ", Students.Select(s => s.Name))}";
+        }
+
+        public void AddStudent(Student student)
+        {
+            Students.Add(student);
+        }
+
+        public void RemoveStudent(Student student)
+        {
+            Students.Remove(student);
+        }
+
+        public int GetStudentCount()
+        {
+            return Students.Count;
         }
     }
 }
