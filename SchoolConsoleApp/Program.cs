@@ -13,9 +13,13 @@ namespace MyConsoleApp
             // Create the DI container
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IUserFactory, UserFactory>()
+                .AddSingleton<IBillService, BillService>()
+                .AddSingleton<IPaymentService, PaymentService>()
                 .BuildServiceProvider();
 
             var userFactory = serviceProvider.GetService<IUserFactory>();
+            var billService = serviceProvider.GetService<IBillService>();
+            var paymentService = serviceProvider.GetService<IPaymentService>();
 
             if (userFactory != null)
             {
@@ -39,7 +43,6 @@ namespace MyConsoleApp
 
                 // Create classrooms
                 Classroom classroom = new Classroom(2, "Primary Two");
-                Classroom classroom2 = new Classroom(1, "Primary One");
 
                 // Add students to the classroom
                 classroom.AddStudent(student);
@@ -52,9 +55,6 @@ namespace MyConsoleApp
                 // Get the student count in the classroom
                 int studentCount = classroom.GetStudentCount();
                 Console.WriteLine($"Student count in classroom {classroom.Name}: {studentCount}");
-
-                // Create a bill service
-                BillService billService = new();
 
                 // Create bills
                 billService.CreateBill(1, "Canteen", "Term one bill", 1000, DateTime.Now, classroom);
@@ -83,7 +83,6 @@ namespace MyConsoleApp
                 decimal totalCanteenBillAmount = billService.CalculateTotalBillAmountByType("Canteen");
                 Console.WriteLine($"Total canteen bill amount: {totalCanteenBillAmount}");
 
-
                 // Create some example students
                 var student1 = userFactory.CreateStudent("John Doe", "john@example.com", 16, "Male", "123 Main St", DateTime.Now, parent);
 
@@ -98,9 +97,6 @@ namespace MyConsoleApp
                 student1.AddBill(bill2);
                 student2.AddBill(bill1);
 
-                // Create an instance of the PaymentService
-                var paymentService = new PaymentService();
-
                 // Add some example payments
                 paymentService.AddPayment(1, student1.ID, 500, bill1.ID);
                 paymentService.AddPayment(2, student1.ID, 800, bill2.ID);
@@ -113,8 +109,6 @@ namespace MyConsoleApp
                 // Calculate total payment amount
                 decimal totalPaymentAmount = paymentService.CalculateTotalPaymentAmount();
                 Console.WriteLine($"Total payment amount: {totalPaymentAmount}");
-
-
             }
             else
             {

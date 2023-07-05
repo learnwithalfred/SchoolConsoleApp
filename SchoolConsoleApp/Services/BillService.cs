@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SchoolConsoleApp.Services
 {
-    public class BillService
+    public class BillService : IBillService
     {
         private readonly List<Bill> bills;
 
