@@ -27,16 +27,8 @@ namespace SchoolConsoleApp.Services
             List<Student> students = classroom.Students;
             foreach (Student student in students)
             {
-                if (!HasUnpaidBill(student, classroom))
-                {
-                    Bill bill = GetBillByClassroom(classroom);
-                    student.AddBill(bill);
-                }
-                else
-                {
-                    Bill bill = GetBillByClassroom(classroom);
-                    student.Bills.Add(bill);
-                }
+                Bill bill = GetBillByClassroom(classroom);
+                student.Bills.Add(bill);
             }
         }
 
@@ -48,11 +40,6 @@ namespace SchoolConsoleApp.Services
         public decimal CalculateTotalBillAmountByType(string type)
         {
             return bills.Where(bill => bill.Type == type).Sum(bill => bill.Amount);
-        }
-
-        private bool HasUnpaidBill(Student student, Classroom classroom)
-        {
-            return student.Bills.Any(bill => bill.Classroom == classroom);
         }
 
         private Bill GetBillByClassroom(Classroom classroom)

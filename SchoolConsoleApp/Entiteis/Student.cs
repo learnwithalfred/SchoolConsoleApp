@@ -37,6 +37,7 @@ namespace SchoolConsoleApp.Entiteis
             return Bills.Sum(bill => bill.Amount);
         }
 
+
         public override string ToString()
         {
             return $"Name: {Name}\nEmail: {Email}\nAge: {Age}\nGender: {Gender}\nAddress: {Address}\nParent Name: {Parent.Name}";

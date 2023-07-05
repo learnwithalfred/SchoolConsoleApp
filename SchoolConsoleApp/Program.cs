@@ -54,7 +54,7 @@ namespace MyConsoleApp
                 Console.WriteLine($"Student count in classroom {classroom.Name}: {studentCount}");
 
                 // Create a bill service
-                BillService billService = new BillService();
+                BillService billService = new();
 
                 // Create bills
                 billService.CreateBill(1, "Canteen", "Term one bill", 1000, DateTime.Now, classroom);
@@ -82,6 +82,39 @@ namespace MyConsoleApp
                 // Calculate the total bill amount by type
                 decimal totalCanteenBillAmount = billService.CalculateTotalBillAmountByType("Canteen");
                 Console.WriteLine($"Total canteen bill amount: {totalCanteenBillAmount}");
+
+
+                // Create some example students
+                var student1 = userFactory.CreateStudent("John Doe", "john@example.com", 16, "Male", "123 Main St", DateTime.Now, parent);
+
+                // Create some example bills
+                var bill1 = new Bill(1, "Canteen", "Term one bill", 1000, DateTime.Parse("2023-01-20"), null);
+                var bill2 = new Bill(2, "School Fees", "Term two bill", 2000, DateTime.Parse("2023-04-10"), null);
+
+                Console.WriteLine("==========******=========********************=========*******==========\n");
+
+                // Assign bills to students
+                student1.AddBill(bill1);
+                student1.AddBill(bill2);
+                student2.AddBill(bill1);
+
+                // Create an instance of the PaymentService
+                var paymentService = new PaymentService();
+
+                // Add some example payments
+                paymentService.AddPayment(1, student1.ID, 500, bill1.ID);
+                paymentService.AddPayment(2, student1.ID, 800, bill2.ID);
+                paymentService.AddPayment(3, student2.ID, 900, bill1.ID);
+
+                // Calculate total payment for a student
+                decimal totalPaymentForStudent = paymentService.CalculateTotalPaymentForStudent(student1);
+                Console.WriteLine($"Total payment for student1: {totalPaymentForStudent}");
+
+                // Calculate total payment amount
+                decimal totalPaymentAmount = paymentService.CalculateTotalPaymentAmount();
+                Console.WriteLine($"Total payment amount: {totalPaymentAmount}");
+
+
             }
             else
             {
