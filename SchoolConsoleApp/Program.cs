@@ -48,11 +48,8 @@ namespace SchoolConsoleApp
                 classroom.AddStudent(student);
                 classroom.AddStudent(student2);
 
-                // Remove a student from the classroom
-                // classroom.RemoveStudent(student2);
                 classroom.RemoveStudent(student);
 
-                // Get the student count in the classroom
                 int studentCount = classroom.GetStudentCount();
                 Console.WriteLine($"Student count in classroom {classroom.Name}: {studentCount}");
 
@@ -67,13 +64,13 @@ namespace SchoolConsoleApp
                 decimal totalBillAmount2 = student.CalculateTotalBillAmount();
                 Console.WriteLine($"Total bill amount for {student2.Name}: {totalBillAmount2}");
 
-                Console.WriteLine("=========================\n");
+                Console.WriteLine("----------------------------------------\n");
 
                 // Calculate the total bill amount for another student
                 decimal totalBillAmount3 = student2.CalculateTotalBillAmount();
                 Console.WriteLine($"Total bill amount for {student2.Name}: {totalBillAmount3}");
 
-                Console.WriteLine("===================------===================\n");
+                Console.WriteLine("----------------------------------------\n");
 
                 // Calculate the total bill amount
                 decimal totalBillAmount = billService.CalculateTotalBillAmount();
@@ -90,7 +87,7 @@ namespace SchoolConsoleApp
                 var bill1 = new Bill(1, "Canteen", "Term one bill", 1000, DateTime.Parse("2023-01-20"), null);
                 var bill2 = new Bill(2, "School Fees", "Term two bill", 2000, DateTime.Parse("2023-04-10"), null);
 
-                Console.WriteLine("==========******=========********************=========*******==========\n");
+                Console.WriteLine("----------------------------------------\n");
 
                 // Assign bills to students
                 student1.AddBill(bill1);
@@ -106,7 +103,8 @@ namespace SchoolConsoleApp
                 decimal totalPaymentForStudent = paymentService.CalculateTotalPaymentForStudent(student1);
                 Console.WriteLine($"Total payment for student1: {totalPaymentForStudent}");
 
-                // Calculate total payment amount
+                Console.WriteLine("----------------------------------------\n");
+
                 decimal totalPaymentAmount = paymentService.CalculateTotalPaymentAmount();
                 Console.WriteLine($"Total payment amount: {totalPaymentAmount}");
             }
